@@ -7,15 +7,14 @@ build:
 serve:
 	mkdocs serve
 
-report: report.html
-report.html:
-	pytest --html-report=./report.html --self-contained-html
-#	pytest --html=report.html --self-contained-html
+report: report/pytest_html_report.html
+report/pytest_html_report.html:
+	pytest --html-report=./report/ --self-contained-html --title="PyTest Report"
 
 distclean:
-	rm report.html
+	rm -f report/*
 
 clean: distclean
 
-open: report.html
-	open report.html
+open: report
+	open report/pytest_html_report.html
