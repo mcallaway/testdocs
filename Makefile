@@ -1,11 +1,16 @@
 
-.PHONY: build serve open clean distclean
+.PHONY: build serve open clean distclean deploy
 
 build:
 	mkdocs build
 
 serve:
 	mkdocs serve
+
+# This assumes GitHub repo Settings have Pages configured,
+# and set to the 'gh-deploy' branch and the '/' directory.
+deploy:
+	mkdocs gh-deploy
 
 report: report/pytest_html_report.html
 report/pytest_html_report.html:
