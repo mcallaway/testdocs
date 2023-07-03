@@ -13,10 +13,10 @@ from utils import peek
 # We load all the YAML and test that they have all the keys and values we expect.
 config = load_config()
 macros = config['plugins']['macros']
-services_yaml = macros.config['include_yaml']
+included_yaml = macros.config['include_yaml']
 
-@pytest.mark.parametrize("filepath", services_yaml)
-def test_service_yaml_data(yaml_data_from_filepath):
-    """Validate that YAML data defining the service has all required keys."""
+@pytest.mark.parametrize("filepath", included_yaml)
+def test_included_yaml_data(yaml_data_from_filepath):
+    """Validate that included YAML data has all required keys."""
 
     assert dict_extract('name', yaml_data_from_filepath) is not None
