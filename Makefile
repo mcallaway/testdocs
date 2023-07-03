@@ -1,5 +1,5 @@
 
-.PHONY: build serve open clean distclean deploy
+.PHONY: build test report serve open clean distclean deploy
 
 build:
 	mkdocs build
@@ -12,14 +12,16 @@ serve:
 deploy:
 	mkdocs gh-deploy
 
-report: report/pytest_html_report.html
-report/pytest_html_report.html:
-	pytest --html-report=./report/ --self-contained-html --title="PyTest Report"
+test:
+	pytest -sv
+
+report:
+	pytest --html-report=./docs/report/ --self-contained-html --title="PyTest Report"
+
+open:
+	open http://127.0.0.1:8000
 
 distclean:
 	rm -f report/*
+	rm -rf site/*
 
-clean: distclean
-
-open: report
-	open report/pytest_html_report.html

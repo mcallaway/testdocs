@@ -15,3 +15,6 @@ For full documentation visit [mkdocs.org](https://www.mkdocs.org).
         index.md  # The documentation homepage.
         ...       # Other markdown pages, images and other files.
 
+## Test reporting
+
+See [Test Results](report/pytest_html_report.html)
