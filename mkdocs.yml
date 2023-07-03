@@ -1,0 +1,51 @@
+site_name: Test Docs
+site_description: Test Documentation
+repo_name: testdocs
+repo_url: https://github.com/mcallaway/testdocs
+edit_uri: edit/master/docs
+
+theme:
+  name: 'material'
+  custom_dir: docs/overrides
+  features:
+    - content.action.edit
+
+plugins:
+  - git-authors:
+      enabled: !ENV [ENABLE_GIT_AUTHORS, True]
+  - git-revision-date-localized
+  - search
+  - macros:
+      # Data defined in these YAML documents can be
+      # used in markdown pages.
+      include_yaml:
+        - data/sitedata.yml
+
+markdown_extensions:
+  # Admonitions include "Note" and "Warning" etc.
+  # https://python-markdown.github.io/extensions/admonition/
+  - admonition
+  # Definition Lists:
+  # https://python-markdown.github.io/extensions/definition_lists/
+  - def_list
+  # Footnotes:
+  # https://python-markdown.github.io/extensions/footnotes/
+  - footnotes
+  # Enable the use of document 'meta' tags at the top of .md pages
+  - meta
+  # PlantUML is a powerful graphing tool
+  #- plantuml_markdown
+  # Superfences allows for ``` codeblocks nested
+  # beyond just the root document structure.
+  # https://stackoverflow.com/questions/57366489/code-block-in-a-numbered-list-messes-up-numbering-python-markdown-mkdocs
+  - pymdownx.highlight
+  - pymdownx.superfences
+
+docs_dir: docs
+
+#extra_javascript:
+#  - js/go_to_prod.js
+
+nav:
+  - Home: 'index.md'
+
